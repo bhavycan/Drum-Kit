@@ -4,6 +4,8 @@ for (var i = 0; i < numberofDrumButton; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function () {
     var selectbtn = this.innerHTML;
     checking(selectbtn);
+   
+    
   });
 }
 
@@ -42,6 +44,11 @@ function snare() {
   return audio.play();
 }
 
+function warning(){
+
+  document.querySelector('.warning-text p').innerHTML = "Kindly, Use the Written key. Check The CapsLock Key make sure it is off";
+}
+
 function checking(selectbtn) {
   if (selectbtn == "w") {
     return tom1();
@@ -58,8 +65,14 @@ function checking(selectbtn) {
   } else if (selectbtn == "l") {
     return snare();
   }
+
 }
 
 addEventListener("keydown", function (event) {
-  checking(event.key);
+  if(event.key == 'w' || event.key == 'a' || event.key == 's'|| event.key == 'd' ||event.key == 'j' || event.key == 'k' ||event.key == 'l'){
+    checking(event.key);
+    }
+    else{
+      warning();
+    }
 });
